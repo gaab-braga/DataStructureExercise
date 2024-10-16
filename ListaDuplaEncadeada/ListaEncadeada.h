@@ -24,7 +24,10 @@ int insere_lista_ordenado(Lista* li, struct aluno al);
 void imprime_lista(Lista* li);
 int conta_alunos(Lista* li);
 
+// Funções adicionadas
 Lista* cria_lista_melhores_notas(Lista* disciplina1, Lista* disciplina2);
 Lista* cria_lista_piores_notas(Lista* disciplina1, Lista* disciplina2);
+Lista* concatena_listas(Lista* disciplina1, Lista* disciplina2);
+void inverte_lista(Lista* li);
 
 #endif

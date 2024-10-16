@@ -3,7 +3,7 @@
 
 typedef struct no {
     int valor;
-    struct no* proximo;
+    struct no* prox;
 } No;
 
 typedef struct lista {

@@ -6,7 +6,7 @@ int main() {
     Lista* disciplina1 = cria_lista();
     Lista* disciplina2 = cria_lista();
 
-    // Inserção de alunos na disciplina 1 e 2
+    // Inserção de alunos nas disciplinas 1 e 2
     struct aluno alunos_disciplina1[] = {
         {16350, "Joao", 5.0, 5.0, 5.5, 3.5, 4.5, 0.0},
         {17890, "Ricardo", 7.0, 8.0, 6.2, 4.3, 5.8, 0.0},
@@ -33,7 +33,7 @@ int main() {
         {16432, "Samuel", 6.0, 6.0, 9.5, 8.5, 7.0, 0.0}
     };
 
-
+    // Insere os alunos nas listas das disciplinas
     for (int i = 0; i < 10; i++) {
         insere_lista_ordenado(disciplina1, alunos_disciplina1[i]);
         insere_lista_ordenado(disciplina2, alunos_disciplina2[i]);
@@ -49,11 +49,22 @@ int main() {
     printf("\n10 Piores Notas:\n");
     imprime_lista(piores_notas);
 
+    // Concatenar as duas listas de disciplinas
+    Lista* lista_concatenada = concatena_listas(disciplina1, disciplina2);
+    printf("\nLista Concatenada (Maiores para Menores):\n");
+    imprime_lista(lista_concatenada);
+
+    // Inverter a lista concatenada
+    inverte_lista(lista_concatenada);
+    printf("\nLista Concatenada (Menores para Maiores):\n");
+    imprime_lista(lista_concatenada);
+
     // Liberação de memória
     libera_lista(disciplina1);
     libera_lista(disciplina2);
     libera_lista(melhores_notas);
     libera_lista(piores_notas);
+    libera_lista(lista_concatenada);
 
     return 0;
 }

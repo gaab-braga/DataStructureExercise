@@ -12,11 +12,11 @@ void inserir_no_inicio(Lista* lista, int num) {
     No* novo = (No*) malloc(sizeof(No));
     if (novo) {
         novo->valor = num;
-        novo->proximo = lista->inicio;
+        novo->prox = lista->inicio;
         lista->inicio = novo;
         if (lista->tamanho == 0)
             lista->fim = novo;
-        lista->fim->proximo = lista->inicio;
+        lista->fim->prox = lista->inicio;
         lista->tamanho++;
     } else {
         printf("Erro ao alocar memoria");
@@ -30,11 +30,11 @@ void inserir_no_fim(Lista* lista, int num) {
         if (lista->inicio == NULL) {
             lista->inicio = novo;
             lista->fim = novo;
-            lista->fim->proximo = lista->inicio;
+            lista->fim->prox = lista->inicio;
         } else {
-            lista->fim->proximo = novo;
+            lista->fim->prox = novo;
             lista->fim = novo;
-            novo->proximo = lista->inicio;
+            novo->prox = lista->inicio;
         }
         lista->tamanho++;
     } else {
@@ -50,13 +50,13 @@ void inserir_ordenado(Lista* lista, int num) {
             inserir_no_inicio(lista, num);
         } else {
             No* aux = lista->inicio;
-            while (aux->proximo != lista->inicio && novo->valor > aux->proximo->valor)
-                aux = aux->proximo;
-            if (aux->proximo == lista->inicio) {
+            while (aux->prox != lista->inicio && novo->valor > aux->prox->valor)
+                aux = aux->prox;
+            if (aux->prox == lista->inicio) {
                 inserir_no_fim(lista, num);
             } else {
-                novo->proximo = aux->proximo;
-                aux->proximo = novo;
+                novo->prox = aux->prox;
+                aux->prox = novo;
                 lista->tamanho++;
             }
         }
@@ -75,21 +75,21 @@ No* remover(Lista* lista, int num) {
             lista->tamanho--;
         } else if (lista->inicio->valor == num) {
             remover = lista->inicio;
-            lista->inicio = lista->inicio->proximo;
-            lista->fim->proximo = lista->inicio;
+            lista->inicio = lista->inicio->prox;
+            lista->fim->prox = lista->inicio;
             lista->tamanho--;
         } else {
             aux = lista->inicio;
-            while (aux->proximo != lista->inicio && aux->proximo->valor != num)
-                aux = aux->proximo;
-            if (aux->proximo->valor == num) {
-                if (lista->fim == aux->proximo) {
-                    remover = aux->proximo;
-                    aux->proximo = remover->proximo;
+            while (aux->prox != lista->inicio && aux->prox->valor != num)
+                aux = aux->prox;
+            if (aux->prox->valor == num) {
+                if (lista->fim == aux->prox) {
+                    remover = aux->prox;
+                    aux->prox = remover->prox;
                     lista->fim = aux;
                 } else {
-                    remover = aux->proximo;
-                    aux->proximo = remover->proximo;
+                    remover = aux->prox;
+                    aux->prox = remover->prox;
                 }
                 lista->tamanho--;
             }
@@ -104,7 +104,7 @@ No* buscar(Lista* lista, int num) {
         do {
             if (aux->valor == num)
                 return aux;
-            aux = aux->proximo;
+            aux = aux->prox;
         } while (aux != lista->inicio);
     }
     return NULL;
@@ -116,7 +116,7 @@ void imprimir(Lista* lista) {
     if (no) {
         do {
             printf("%d ", no->valor);
-            no = no->proximo;
+            no = no->prox;
         } while (no != lista->inicio);
         printf("\nInicio: %d\n", no->valor);
     }
