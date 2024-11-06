@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++: gcc build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",  // Usar o executável gerado
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",  // O diretório onde o arquivo está
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Habilitar a reformatação automática para gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build active file",  // Tarefa de build antes de iniciar o debug
+            "miDebuggerPath": "C:/mingw/bin/gdb.exe",  // Caminho para o gdb (ajuste conforme necessário)
+            "logging": {
+                "moduleLoad": false,
+                "trace": false,
+                "engineLogging": false,
+                "programOutput": true,
+                "exceptions": false
+            }
+        }
+    ]
+}

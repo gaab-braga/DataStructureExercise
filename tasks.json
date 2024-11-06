@@ -2,18 +2,21 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Compilar C com cl.exe",
+            "label": "build active file",
             "type": "shell",
-            "command": "cl.exe",
+            "command": "gcc",
             "args": [
-                "/EHsc",
-                "main.c"  
+                "-g",
+                "${file}",                                  // Compilar o arquivo ativo (o que está aberto)
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe"  // Gerar o executável no mesmo diretório do arquivo
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": ["$msCompile"]
+            "problemMatcher": ["$gcc"],
+            "detail": "Compilando o arquivo ativo"
         }
     ]
 }
